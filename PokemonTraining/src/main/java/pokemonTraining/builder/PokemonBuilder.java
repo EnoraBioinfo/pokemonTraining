@@ -14,11 +14,12 @@ public class PokemonBuilder {
     
 	private Pokemon pokemon;
 
-    public PokemonBuilder(Integer id, String nom, TYP type1) {
+    public PokemonBuilder(Integer id, String nom) {
         this.pokemon = new Pokemon();
         this.pokemon.setId(id);
         this.pokemon.setPokemon(nom);
-        this.pokemon.setType1(type1);
+        this.pokemon.setImageFront(String.format("Spr_3e_%03d.png", id));
+        this.pokemon.setImageBack(String.format("Spr_3e_%03d.png", id));
         this.pokemon.setMoveset(new ArrayList<>());
     }
     
@@ -34,15 +35,15 @@ public class PokemonBuilder {
         return this;
     }
 
+    public PokemonBuilder evol(int level, Pokemon pokemon) {
+        this.pokemon.setLevelEvolution(level);
+        this.pokemon.setEvolution(pokemon);
+        return this;
+    }
+    
     public PokemonBuilder ev(int hp, int att, int def, int attSpe, int defSpe, int speed) {
         Stats s = new Stats(hp, att, def, attSpe, defSpe, speed);
         this.pokemon.setEv(s);
-        return this;
-    }
-
-    public PokemonBuilder images(String front, String back) {
-        this.pokemon.setImageFront(front);
-        this.pokemon.setImageBack(back);
         return this;
     }
 

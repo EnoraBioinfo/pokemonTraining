@@ -36,6 +36,7 @@ public class Pokemon {
 	@Column(nullable = false)
 	private String imageBack;
 
+	private int levelEvolution;
 	@OneToOne
 	@JoinColumn(nullable = true)
 	private Pokemon evolution;
@@ -45,7 +46,7 @@ public class Pokemon {
 	public Pokemon() {}
 
 	public Pokemon(Integer id, String pokemon, TYP type1, TYP type2, Stats baseStats, Stats ev, String imageFront,
-			String imageBack, Pokemon evolution, List<Moveset> moveset) {
+			String imageBack, int levelEvolution, Pokemon evolution, List<Moveset> moveset) {
 		this.id = id;
 		this.pokemon = pokemon;
 		this.type1 = type1;
@@ -54,6 +55,7 @@ public class Pokemon {
 		this.ev = ev;
 		this.imageFront = imageFront;
 		this.imageBack = imageBack;
+		this.levelEvolution = levelEvolution;
 		this.evolution = evolution;
 		this.moveset = moveset;
 	}
@@ -138,12 +140,22 @@ public class Pokemon {
 		this.moveset = moveset;
 	}
 
+	public int getLevelEvolution() {
+		return levelEvolution;
+	}
+
+	public void setLevelEvolution(int levelEvolution) {
+		this.levelEvolution = levelEvolution;
+	}
+
 	@Override
 	public String toString() {
 		return "Pokemon [id=" + id + ", pokemon=" + pokemon + ", type1=" + type1 + ", type2=" + type2 + ", baseStats="
-				+ baseStats + ", ev=" + ev + ", imageFront=" + imageFront + ", imageBack=" + imageBack + ", evolution="
-				+ evolution + "]";
+				+ baseStats + ", ev=" + ev + ", imageFront=" + imageFront + ", imageBack=" + imageBack
+				+ ", levelEvolution=" + levelEvolution + ", evolution=" + evolution + "]";
 	}
+
+	
 	
 	
 }
